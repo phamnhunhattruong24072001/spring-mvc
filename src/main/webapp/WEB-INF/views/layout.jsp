@@ -10,7 +10,7 @@
 
 <jsp:include page="partials/header.jsp" />
 
-<div class="container">
+<div class="container py-5">
     <jsp:include page="${content}" />
 </div>
 
