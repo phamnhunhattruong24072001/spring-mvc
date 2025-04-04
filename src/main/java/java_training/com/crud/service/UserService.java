@@ -67,4 +67,13 @@ public class UserService {
 
         return userDTO;
     }
+
+    public String deleteUser(Long id) {
+        Integer intId = id.intValue();
+        if (userRepository.existsById(intId)) {
+            userRepository.deleteById(intId);
+        }
+
+        return "redirect:/user/list";
+    }
 }
