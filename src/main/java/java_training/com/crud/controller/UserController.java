@@ -4,12 +4,14 @@ import java_training.com.crud.dto.UserDTO;
 import java_training.com.crud.model.User;
 import java_training.com.crud.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
 import java.util.Optional;
 
-@RestController
+@Controller
 @RequestMapping("/user")
 public class UserController {
     @Autowired
@@ -17,10 +19,11 @@ public class UserController {
 
     @GetMapping("/list")
     public ModelAndView listUser() {
+        List<User> users = userService.getAllUsers();
         ModelAndView modelAndView = new ModelAndView("layout");
         modelAndView.addObject("title", "List of users");
         modelAndView.addObject("content", "user/list.jsp");
-        modelAndView.addObject("users", userService.getAllUsers());
+        modelAndView.addObject("users", users);
         return modelAndView;
     }
 
